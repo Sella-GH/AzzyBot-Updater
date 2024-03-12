@@ -15,7 +15,7 @@
   </p>
 </p>
 
-![Downloads](https://img.shields.io/github/downloads/Sella-GH/AzzyBot-Updater/total) ![Contributors](https://img.shields.io/github/contributors/Sella-GH/AzzyBot-Updater?color=dark-green) ![Forks](https://img.shields.io/github/forks/Sella-GH/AzzyBot-Updater?style=social) ![Stargazers](https://img.shields.io/github/stars/Sella-GH/AzzyBot-Updater?style=social) ![Issues](https://img.shields.io/github/issues/Sella-GH/AzzyBot-Updater)
+![Contributors](https://img.shields.io/github/contributors/Sella-GH/AzzyBot-Updater?color=dark-green) ![Forks](https://img.shields.io/github/forks/Sella-GH/AzzyBot-Updater?style=social) ![Stargazers](https://img.shields.io/github/stars/Sella-GH/AzzyBot-Updater?style=social) ![Issues](https://img.shields.io/github/issues/Sella-GH/AzzyBot-Updater)
 
 ## Table Of Contents
 
