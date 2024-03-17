@@ -39,7 +39,7 @@ internal static class JsonSettings
         Permissions = config["Updater:Permissions"] ?? string.Empty;
         ProcessName = config["Updater:ProcessName"] ?? string.Empty;
 
-        List<string> excluded = [nameof(ArtifactName), nameof(BranchName)];
+        List<string> excluded = [nameof(ArtifactName), nameof(BranchName), nameof(SettingsSet)];
         List<string> failed = CheckSettings(excluded);
 
         if (failed.Count == 0)
