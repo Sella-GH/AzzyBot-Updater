@@ -41,8 +41,11 @@ jobs:
         uses: actions/setup-dotnet@v4
         with:
           dotnet-version: '8.0.x'
+          
+      - name: Install GitHub CLI
+        run: sudo apt-get update && sudo apt-get install -y gh
       
-      - name: Publish Release for ${{ matrix.os }}-${{ matrix.arch }}
+      - name: Publish Release
         run: |
           dotnet publish -c Release -r ${{ matrix.os }}-${{ matrix.arch }}
         

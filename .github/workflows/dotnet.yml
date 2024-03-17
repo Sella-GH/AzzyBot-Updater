@@ -7,23 +7,46 @@ on:
   push:
     paths:
       - "**.cs"
+      - "**.csproj"
+      - "**.json"
+      - "**.props"
+      - "**.sln"
       - ".github/workflows/dotnet.yml"
   workflow_dispatch:
 
 jobs:
   build:
+    name: Build and Publish DEBUG for ${{ matrix.os }} - ${{ matrix.arch }}
     runs-on: ubuntu-latest
-
+    strategy:
+      matrix:
+        include:
+          - os: linux
+            arch: x64
+          - os: linux
+            arch: arm64
+          - os: win
+            arch: x64
+          - os: win
+            arch: arm64
     steps:
-    - uses: actions/checkout@v4
-    - name: Setup .NET
-      uses: actions/setup-dotnet@v4
-      with:
-        dotnet-version: 8.0.x
-    - name: Publish Debug
-      run: dotnet publish -c Debug -r linux-arm64
-    - name: Archive Debug Build Artifact (AzzyBot)
-      uses: actions/upload-artifact@v4
-      with:
-        name: debug-artifact
-        path: ./artifacts/publish/AzzyBot/debug_linux-arm64/*
+      - name: Checkout
+        uses: actions/checkout@v4
+      
+      - name: Setup .NET 8.0.x
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '8.0.x'
+
+      - name: Install GitHub CLI
+        run: sudo apt-get update && sudo apt-get install -y gh
+      
+      - name: Publish Debug
+        run: |
+          dotnet publish -c Debug -r ${{ matrix.os }}-${{ matrix.arch }}
+        
+      - name: Archive Build Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: debug-${{ matrix.os }}-${{ matrix.arch }}
+          path: ./artifacts/publish/Updater/debug_${{ matrix.os }}-${{ matrix.arch }}
