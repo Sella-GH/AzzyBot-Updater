@@ -44,7 +44,7 @@ internal static class Program
 
     private static async Task CheckForUpdatesAsync()
     {
-        Version localVersion = new(LinuxCommands.GetFileVersion());
+        Version localVersion = new(GeneralCommands.GetFileVersion());
         Version onlineVersion = await WebRequests.GetLatestVersionAsync().ConfigureAwait(true);
 
         if (onlineVersion > localVersion)
@@ -57,6 +57,6 @@ internal static class Program
         Environment.Exit(0);
     }
 
-    private static void RestartBot() => LinuxCommands.RestartProcess();
+    private static void RestartBot() => GeneralCommands.RestartProcess();
     private static void GlobalExceptionHandler(object sender, UnhandledExceptionEventArgs e) => ExceptionHandler.LogError((Exception)e.ExceptionObject);
 }

@@ -134,7 +134,7 @@ internal static class WebRequests
             Directory.CreateDirectory(JsonSettings.PathToApp);
 
         // Stop the application
-        LinuxCommands.ConfigureProcess(false);
+        GeneralCommands.ConfigureProcess(false);
 
         // Delete all files except three important ones
         string[] existingFiles = Directory.GetFiles(JsonSettings.PathToApp);
@@ -204,7 +204,7 @@ internal static class WebRequests
                 entry.ExtractToFile(fullPath);
 
                 // Set correct file permissions
-                LinuxCommands.SetFilePermission(fullPath);
+                GeneralCommands.SetFilePermission(fullPath);
             }
         }
 
@@ -223,7 +223,7 @@ internal static class WebRequests
 
         ExceptionHandler.LogMessage($"AzzyBot updated to commit {CommitSha} created at {CommitDate}!");
 
-        LinuxCommands.ConfigureProcess(true);
+        GeneralCommands.ConfigureProcess(true);
     }
 
     private static void AddHeadersToClient(HttpClient httpClient)
@@ -265,6 +265,6 @@ internal static class WebRequests
         string path = Path.Combine(JsonSettings.PathToApp, name);
 
         await File.WriteAllTextAsync(path, text).ConfigureAwait(true);
-        LinuxCommands.SetFilePermission(path);
+        GeneralCommands.SetFilePermission(path);
     }
 }
