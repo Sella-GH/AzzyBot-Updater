@@ -41,17 +41,32 @@ updates:
       prefix: "[NuGet]"
       include: "scope"
     groups:
-      DSharpPlus:
-        applies-to: version-updates
-        patterns:
-        - "DSharpPlus*"
-        update-types:
-        - "minor"
-        - "patch"
       Microsoft:
         applies-to: version-updates
         patterns:
         - "Microsoft*"
+        update-types:
+        - "minor"
+        - "patch"
+      Roslynator:
+        applies-to: version-updates
+        patterns:
+        - "Roslynator*"
+        update-types:
+        - "minor"
+        - "patch"
+      System:
+        applies-to: version-updates
+        patterns:
+        - "System*"
+        update-types:
+        - "minor"
+        - "patch"
+      Others:
+        applies-to: version-updates
+        exclude-patterns:
+        - "Microsoft*"
+        - "System*"
         update-types:
         - "minor"
         - "patch"
